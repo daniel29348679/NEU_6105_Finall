@@ -1,0 +1,9 @@
+company,industry,headquarter_location,status,layoffs_12m,layoffs_last90d,days_since_last_layoff,total_employees_est,layoff_ratio,impacted_pct_recent
+addepar,"fintech, data analytics","mountain view, ca",private,20.0,20.0,1036,666.6666666666667,0.0299999999999999,0.03
+aqua security,"secops, security","burlington, ma",private,65.0,65.0,1080,650.0,0.1,0.1
+superrare,"blockchain, cryptocurrency","newark, de",private,100.0,100.0,1048,1666.6666666666667,0.12,0.3
+informatica,"big data, cloud computing","redwood city, ca",public,450.0,450.0,1044,6428.571428571428,0.07,0.07
+bigcommerce,"enterprise software, ecommerce","austin, tx",public,100.0,100.0,1070,1209.090909090909,0.12,0.13
+wonder,"food delivery, ecommerce",new york,private,130.0,130.0,1085,1857.1428571428569,0.07,0.07
+citizen,surveillance,new york,private,33.0,33.0,1043,1209.090909090909,0.0272932330827067,0.15
+vimeo,mediaentertainment,new york,public,100.0,100.0,1050,1209.090909090909,0.12,0.06
