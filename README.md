@@ -4,14 +4,25 @@ This repo follows the course guide (Extract → Learn → Predict) for a layoff-
 
 ## Environment
 - Python 3.12+ recommended.
-- Install deps: `python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt`
+- Install deps locally (no virtual env needed): `python3 -m pip install -r requirements.txt`
 - Data lives in `Data/`; notebooks in `Notebooks/`.
 
-## Part 1 — Extract (Data)
-Files: `Data/tech_layoffs.csv` (raw), `Data/data_cleaning_script.ipynb` (ETL), output `Data/cleaned_dataset.csv` (adds `target_high_risk`).
-Steps:
-1) Put raw CSV in `Data/tech_layoffs.csv` (optionally add `news_features.csv` / `finance_features.csv` keyed by company).
-2) Open/run `Data/data_cleaning_script.ipynb` to rebuild `cleaned_dataset.csv`.
+## Part 1 — Extract (EDA + Data)
+- EDA notebook: `Notebooks/EDA.ipynb` — inspects `Data/tech_layoffs.csv`, shows missingness, layoff timeline, target balance, and industry risk rates. Run in Jupyter or headless:
+```bash
+python3 - <<'PY'
+import nbformat
+from nbclient import NotebookClient
+nb = nbformat.read('Notebooks/EDA.ipynb', as_version=4)
+client = NotebookClient(nb, kernel_name='python3', resources={'metadata': {'path': 'Notebooks'}})
+client.execute()
+nbformat.write(nb, 'Notebooks/EDA.ipynb')
+print('EDA notebook executed')
+PY
+```
+- ETL: `Data/data_cleaning_script.ipynb` builds `Data/cleaned_dataset.csv` (adds `target_high_risk`). Steps:
+  1) Put raw CSV in `Data/tech_layoffs.csv` (optionally add `news_features.csv` / `finance_features.csv` keyed by company).
+  2) Run the notebook to regenerate `cleaned_dataset.csv`.
 
 ## Part 2 — Learn (Modeling)
 Notebook: `Notebooks/Modeling.ipynb`
@@ -47,3 +58,10 @@ Notebook: `Notebooks/Predict_Demo.ipynb`
 ## Notes
 - No streamlit app included (bonus optional).
 - Keep column names lowercase with underscores; target column is `target_high_risk`.
+
+## Flow check
+- Install deps with `python3 -m pip install -r requirements.txt` (no virtual env).
+- Run `Notebooks/EDA.ipynb` to review raw data quality and visuals.
+- Run `Data/data_cleaning_script.ipynb` to rebuild `cleaned_dataset.csv`.
+- Train/evaluate via `Notebooks/Modeling.ipynb`.
+- Score new CSVs with `Notebooks/Predict_Demo.ipynb`.
